@@ -155,6 +155,7 @@ dynamic_obstacles = []
 # 🟢 СЧЁТ
 # ----------------------------
 steps = 0
+start_time = time.time()
 penalties = 0
 
 # ----------------------------
@@ -273,6 +274,14 @@ def draw_all():
     score_drawer.clear()
     score_drawer.write(f"Steps: {steps} | Penalties: {penalties} | Score: {score}",
                        align="center", font=("Arial", 16, "bold"))
+                        if not hasattr(draw_all, 'timer_drawer'):
+        draw_all.timer_drawer = turtle.Turtle()
+        draw_all.timer_drawer.hideturtle()
+        draw_all.timer_drawer.penup()
+    draw_all.timer_drawer.clear()
+    elapsed = time.time() - start_time
+    draw_all.timer_drawer.goto(0, HEIGHT//2 - 100)
+    draw_all.timer_drawer.write(f"Time: {elapsed:.1f}s", align="center", font=("Arial", 14, "bold"))
     
     screen.update()
 
@@ -379,7 +388,7 @@ draw_field_markers()
 screen.update()
 
 obstacles_spawned_count = 0
-start_time = time.time()
+
 
 # 🟢 ЛОГИРОВАНИЕ СТАРТА
 log.append({
