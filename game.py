@@ -274,7 +274,8 @@ def draw_all():
     score_drawer.clear()
     score_drawer.write(f"Steps: {steps} | Penalties: {penalties} | Score: {score}",
                        align="center", font=("Arial", 16, "bold"))
-                        if not hasattr(draw_all, 'timer_drawer'):
+                       
+    if not hasattr(draw_all, 'timer_drawer'):
         draw_all.timer_drawer = turtle.Turtle()
         draw_all.timer_drawer.hideturtle()
         draw_all.timer_drawer.penup()
